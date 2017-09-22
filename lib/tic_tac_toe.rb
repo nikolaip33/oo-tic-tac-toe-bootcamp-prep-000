@@ -15,8 +15,28 @@ class TicTacToe
   end
 
   def play
-    puts "playing"
+    while !over?
+      turn
+    end
+    if won?
+      puts "Congratulations #{winner}!"
+    elsif draw?
+      puts "Cat's Game!"
+    end
   end
+
+  def turn
+    puts "Please enter 1-9:"
+    user_input = gets.strip
+    index = input_to_index(user_input)
+    if valid_move?(index)
+      move(index, current_player)
+      display_board
+    else
+      turn
+    end
+  end
+  
 
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
@@ -46,11 +66,19 @@ class TicTacToe
     won?(@board) || draw?(@board)
   end
 
+  def won?
+    WIN_COMBINATIONS.detect do |combo|
+      @board[combo[0]] == @board[combo[1]] &&
+      @board[combo[1]] == @board[combo[2]] &&
+      position_taken?(@board, combo[0])
+    end
+  end
+
   def draw?
     !won?@(board) && full?(@board)
   end
 
-  
+
 
   def winner
     if winning_combo = won?(@board)
