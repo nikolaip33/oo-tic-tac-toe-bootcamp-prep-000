@@ -46,6 +46,12 @@ class TicTacToe
     won?(@board) || draw?(@board)
   end
 
+  def draw?
+    !won?@(board) && full?(@board)
+  end
+
+  
+
   def winner
     if winning_combo = won?(@board)
       @board[winning_combo.first]
