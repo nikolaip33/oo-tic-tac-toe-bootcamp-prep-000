@@ -15,7 +15,7 @@ class TicTacToe
   end
 
   def play
-
+    puts "playing"
   end
 
   def current_player
