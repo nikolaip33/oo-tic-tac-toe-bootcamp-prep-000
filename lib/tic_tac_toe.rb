@@ -41,12 +41,16 @@ class TicTacToe
   def input_to_index(user_input)
     user_input.to_i - 1
   end
-  
+
+  def over?
+    won?(@board) || draw?(@board)
+  end
+
   def winner
     if winning_combo = won?(@board)
       @board[winning_combo.first]
     end
   end
 
-  
+
 end
