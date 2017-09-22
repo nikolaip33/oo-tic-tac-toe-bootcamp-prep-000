@@ -36,7 +36,7 @@ class TicTacToe
       turn
     end
   end
-  
+
 
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
@@ -75,7 +75,7 @@ class TicTacToe
   end
 
   def draw?
-    !won?@(board) && full?(@board)
+    !won?@ && full?
   end
 
 
