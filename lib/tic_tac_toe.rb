@@ -78,7 +78,9 @@ class TicTacToe
     !won? && full?
   end
 
-
+  def position_taken?(index)
+    @board[index]== "X" || @board[index] == "O"
+  end
 
   def winner
     if winning_combo = won?(@board)
